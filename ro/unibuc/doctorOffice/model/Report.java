@@ -28,6 +28,42 @@ public class Report
         this.id = id;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public Pacient getPacient() {
+        return pacient;
+    }
+
+    public void setPacient(Pacient pacient) {
+        this.pacient = pacient;
+    }
+
+    public Medic getMedic() {
+        return medic;
+    }
+
+    public void setMedic(Medic medic) {
+        this.medic = medic;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getDateOfWrite() {
+        return dateOfWrite;
+    }
+
+    public void setDateOfWrite(Date dateOfWrite) {
+        this.dateOfWrite = dateOfWrite;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Report{");

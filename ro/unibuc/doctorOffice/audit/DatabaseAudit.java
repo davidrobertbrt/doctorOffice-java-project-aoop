@@ -37,8 +37,7 @@ public class DatabaseAudit
         String sqlQuery = "SELECT * FROM audit WHERE datetime_action = ?";
 
         try (PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery)) {
-            Date current = new Date();
-            Timestamp timestamp = new Timestamp(current.getTime());
+            Timestamp timestamp = new Timestamp(dateAction.getTime());
             statement.setTimestamp(1, timestamp);
 
             ResultSet resultDb = statement.executeQuery();

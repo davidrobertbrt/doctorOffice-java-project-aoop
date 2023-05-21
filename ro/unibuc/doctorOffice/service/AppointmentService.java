@@ -26,10 +26,12 @@ public class AppointmentService
     {
         List<Appointment> list = repo.readAll();
 
+
         if(list.size() == 0)
             return 0;
 
         this.map = new HashMap<>();
+
 
         for(int i = 0; i < list.size(); i++)
         {

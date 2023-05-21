@@ -27,7 +27,7 @@ public class PacientService
 
         this.pacientMap = new HashMap<>();
 
-        for(int i = 0; i < pacientMap.size(); i++)
+        for(int i = 0; i < list.size(); i++)
         {
             pacientMap.put(i,list.get(i));
         }

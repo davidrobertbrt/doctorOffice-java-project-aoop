@@ -104,6 +104,7 @@ public class AppointmentRepository
                 Pacient pacient = pacientRepo.readById(p_id);
 
                 Appointment ap = new Appointment(appointmentDate,pacient,medic,id);
+                appointments.add(ap);
             }
         }
         catch(SQLException ex)

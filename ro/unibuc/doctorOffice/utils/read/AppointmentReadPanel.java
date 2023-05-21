@@ -8,21 +8,28 @@ import ro.unibuc.doctorOffice.utils.HandlerPanel;
 import ro.unibuc.doctorOffice.utils.Panel;
 import ro.unibuc.doctorOffice.utils.ReadPanel;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
+import java.time.ZoneId;
 
 
 public class AppointmentReadPanel extends Panel
 {
     public void execute()
     {
-        // pe baza zilei de azi
+        LocalDate currentDate = LocalDate.now();
 
-        Date crDate = new Date();
+        Date crDate = java.sql.Date.valueOf(currentDate);
 
         Main.appointmentService.map.entrySet().stream()
-                .filter(entry -> entry.getValue().getAppointmentDate().equals(crDate))
+                .filter(entry -> {
+                    Date appointmentDate = entry.getValue().getAppointmentDate();
+                    LocalDate localAppointmentDate = appointmentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                    return localAppointmentDate.equals(currentDate);
+                })
                 .forEach(entry -> {
                     System.out.println("Appointment ID: " + entry.getKey());
                     System.out.println("Appointment Details: " + entry.getValue());

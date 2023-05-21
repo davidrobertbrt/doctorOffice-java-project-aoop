@@ -31,6 +31,7 @@ public class Main {
 
         loadAll();
 
+
         HandlerPanel handlerPanel = new HandlerPanel();
 
         while(HandlerPanel.signalExit == false)

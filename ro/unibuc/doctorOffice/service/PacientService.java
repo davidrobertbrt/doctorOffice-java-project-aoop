@@ -15,6 +15,7 @@ public class PacientService
     public PacientService()
     {
         this.pacientRepo = new PacientRepository();
+        this.pacientMap = new HashMap<>();
     }
 
     public int loadPacients()

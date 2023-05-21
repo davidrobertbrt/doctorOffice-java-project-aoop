@@ -13,6 +13,7 @@ public class MedicService
 
     public MedicService()
     {
+        this.medicMap = new HashMap<>();
         this.medicRepo = new MedicRepository();
     }
 

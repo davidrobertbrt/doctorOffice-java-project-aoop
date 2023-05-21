@@ -1,7 +1,10 @@
-package ro.unibuc.doctorOffice.utils;
+package ro.unibuc.doctorOffice.utils.read;
 
 import ro.unibuc.doctorOffice.Main;
 import ro.unibuc.doctorOffice.model.Pacient;
+import ro.unibuc.doctorOffice.utils.HandlerPanel;
+import ro.unibuc.doctorOffice.utils.Panel;
+import ro.unibuc.doctorOffice.utils.ReadPanel;
 
 import java.util.Map;
 import java.util.Optional;

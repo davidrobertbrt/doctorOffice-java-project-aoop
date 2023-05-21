@@ -1,11 +1,6 @@
 package ro.unibuc.doctorOffice.utils;
 
-import java.io.*;
-import java.util.*;
-
-import ro.unibuc.doctorOffice.model.Report;
-import ro.unibuc.doctorOffice.utils.HandlerPanel;
-import ro.unibuc.doctorOffice.utils.Panel;
+import ro.unibuc.doctorOffice.utils.create.*;
 
 public class CreatePanel extends Panel
 {

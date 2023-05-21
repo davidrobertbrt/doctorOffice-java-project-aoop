@@ -1,9 +1,12 @@
-package ro.unibuc.doctorOffice.utils;
+package ro.unibuc.doctorOffice.utils.read;
 
 import ro.unibuc.doctorOffice.Main;
 import ro.unibuc.doctorOffice.repository.*;
 import ro.unibuc.doctorOffice.model.*;
 import ro.unibuc.doctorOffice.service.*;
+import ro.unibuc.doctorOffice.utils.HandlerPanel;
+import ro.unibuc.doctorOffice.utils.Panel;
+import ro.unibuc.doctorOffice.utils.ReadPanel;
 
 import java.util.Date;
 import java.util.Map;

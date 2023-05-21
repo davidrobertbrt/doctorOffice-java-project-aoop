@@ -1,8 +1,8 @@
 package ro.unibuc.doctorOffice.utils;
 
-import ro.unibuc.doctorOffice.model.Pacient;
-import ro.unibuc.doctorOffice.utils.HandlerPanel;
-import ro.unibuc.doctorOffice.utils.Panel;
+import ro.unibuc.doctorOffice.utils.delete.AppointmentDeletePanel;
+import ro.unibuc.doctorOffice.utils.delete.MedicDeletePanel;
+import ro.unibuc.doctorOffice.utils.delete.PacientDeletePanel;
 
 public class DeletePanel extends Panel
 {

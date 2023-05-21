@@ -1,11 +1,6 @@
 package ro.unibuc.doctorOffice.utils;
 
-import ro.unibuc.doctorOffice.model.Pacient;
-import ro.unibuc.doctorOffice.model.Report;
-import ro.unibuc.doctorOffice.utils.HandlerPanel;
-import ro.unibuc.doctorOffice.utils.Panel;
-
-import java.util.logging.Handler;
+import ro.unibuc.doctorOffice.utils.read.*;
 
 public class ReadPanel extends Panel
 {

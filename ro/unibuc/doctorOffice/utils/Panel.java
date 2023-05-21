@@ -6,5 +6,5 @@ public abstract class Panel
 {
     protected Scanner scanner = new Scanner(System.in);
 
-    abstract void execute();
+    protected abstract void execute();
 }

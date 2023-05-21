@@ -1,4 +1,4 @@
-package ro.unibuc.doctorOffice.utils;
+package ro.unibuc.doctorOffice.utils.delete;
 
 import ro.unibuc.doctorOffice.repository.*;
 import ro.unibuc.doctorOffice.model.*;

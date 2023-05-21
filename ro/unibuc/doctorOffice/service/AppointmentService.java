@@ -14,7 +14,7 @@ import ro.unibuc.doctorOffice.model.Appointment;
 public class AppointmentService
 {
     public AppointmentRepository repo;
-    Map<Integer,Appointment> map;
+    public Map<Integer,Appointment> map;
 
     public AppointmentService()
     {

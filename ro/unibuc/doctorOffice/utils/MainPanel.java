@@ -26,7 +26,7 @@ public class MainPanel extends Panel
                 HandlerPanel.signalExit = true;
                 break;
             case "citeste":
-
+                HandlerPanel.setPanel(new ReadPanel());
                 break;
             case "adauga":
                 HandlerPanel.setPanel(new CreatePanel());

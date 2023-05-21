@@ -19,6 +19,7 @@ public class AppointmentService
     public AppointmentService()
     {
         repo = new AppointmentRepository();
+        this.map = new HashMap<>();
     }
 
     public int load()

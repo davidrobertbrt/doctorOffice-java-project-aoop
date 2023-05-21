@@ -8,7 +8,7 @@ public final class Appointment
     private Pacient pacient;
     private Medic medic;
 
-    private Appointment(Date appointmentDate,Pacient pacient, Medic medic)
+    public Appointment(Date appointmentDate,Pacient pacient, Medic medic)
     {
         this.id = UUID.randomUUID();
         this.appointmentDate = appointmentDate;
@@ -16,7 +16,7 @@ public final class Appointment
         this.medic = medic;
     }
 
-    private Appointment(Date appointmentDate,Pacient pacient, Medic medic,UUID id)
+    public Appointment(Date appointmentDate,Pacient pacient, Medic medic,UUID id)
     {
         this(appointmentDate,pacient,medic);
         this.id = id;

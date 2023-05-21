@@ -9,9 +9,44 @@ import ro.unibuc.doctorOffice.model.Report;
 import ro.unibuc.doctorOffice.model.Medic;
 import ro.unibuc.doctorOffice.model.Pacient;
 import ro.unibuc.doctorOffice.repository.MedicRepository;
+import ro.unibuc.doctorOffice.repository.ReportRepository;
 
 public class ReportRepository
 {
+    public List<Report> readAll()
+    {
+        String sqlQuery = "SELECT * FROM reports";
+        List<Report> reports = new ArrayList<>();
+
+        try(PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sqlQuery))
+        {
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next())
+            {
+                UUID id = (UUID)rs.getObject("id");
+                UUID pacient_id = (UUID)rs.getObject("pacient_id");
+                UUID medic_id = (UUID)rs.getObject("medic_id");
+                String description = rs.getString("description");
+                java.util.Date dateOfWritten = new java.util.Date(rs.getDate("dateofwrite").getTime());
+
+                MedicRepository medicRepo = new MedicRepository();
+                Medic extractMedic = medicRepo.readById(medic_id);
+                PacientRepository pacientRepo = new PacientRepository();
+                Pacient p = pacientRepo.readById(pacient_id);
+
+                Report report = new Report(p,extractMedic,description,dateOfWritten,id);
+                reports.add(report);
+            }
+        }
+        catch(SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+
+        return reports;
+    }
+
     public List<Report> readByPacient(Pacient p)
     {
         String sqlQuery = "SELECT * FROM reports WHERE pacient_id = ?";

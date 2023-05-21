@@ -50,6 +50,20 @@ public class PrescriptionService
 
         return pos;
     }
+    public int delete(Prescription val)
+    {
+        int pos = findPosition(val);
+
+        if(pos == -1)
+            return -1;
+
+        int response = repo.delete(val);
+
+        map.remove(pos);
+
+        return 1;
+    }
+
 
     public int update(Prescription val)
     {

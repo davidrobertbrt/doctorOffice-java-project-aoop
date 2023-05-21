@@ -32,7 +32,7 @@ public class MainPanel extends Panel
                 HandlerPanel.setPanel(new CreatePanel());
                 break;
             case "sterge":
-
+                HandlerPanel.setPanel(new DeletePanel());
                 break;
             case "schimba":
 

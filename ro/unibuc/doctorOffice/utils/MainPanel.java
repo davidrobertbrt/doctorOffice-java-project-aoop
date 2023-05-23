@@ -35,7 +35,7 @@ public class MainPanel extends Panel
                 HandlerPanel.setPanel(new DeletePanel());
                 break;
             case "schimba":
-
+                HandlerPanel.setPanel(new UpdatePanel());
                 break;
         }
     }

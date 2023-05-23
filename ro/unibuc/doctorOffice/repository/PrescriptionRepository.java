@@ -160,5 +160,35 @@ public class PrescriptionRepository
         insertPillsStmt.executeBatch();
     }
 
+    public int delete(Prescription prescription) {
+        UUID prescriptionId = prescription.getId();
+        String deletePrescriptionQuery = "DELETE FROM prescriptions WHERE id = ?";
+        String deletePillsQuery = "DELETE FROM pills WHERE prescription_id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement deletePrescriptionStmt = connection.prepareStatement(deletePrescriptionQuery);
+             PreparedStatement deletePillsStmt = connection.prepareStatement(deletePillsQuery)) {
+
+            connection.setAutoCommit(false);
+
+            deletePillsStmt.setObject(1, prescriptionId);
+            int pillsDeleted = deletePillsStmt.executeUpdate();
+
+            deletePrescriptionStmt.setObject(1, prescriptionId);
+            int prescriptionDeleted = deletePrescriptionStmt.executeUpdate();
+
+            if (prescriptionDeleted == 1) {
+                connection.commit();
+                return prescriptionDeleted;
+            } else {
+                connection.rollback();
+                throw new SQLException("Failed to delete prescription.");
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
 
 }

@@ -2,6 +2,7 @@ package ro.unibuc.doctorOffice.service;
 
 import java.util.*;
 
+import ro.unibuc.doctorOffice.audit.DatabaseAudit;
 import ro.unibuc.doctorOffice.model.Appointment;
 import ro.unibuc.doctorOffice.model.Report;
 import ro.unibuc.doctorOffice.repository.PrescriptionRepository;
@@ -18,6 +19,7 @@ public class PrescriptionService
     public PrescriptionService()
     {
         repo = new PrescriptionRepository();
+        this.map = new HashMap<>();
     }
 
     public int load()
@@ -34,6 +36,7 @@ public class PrescriptionService
             map.put(i,list.get(i));
         }
 
+        DatabaseAudit.send("load_prescription",new Date());
         return 1;
     }
 
@@ -50,6 +53,21 @@ public class PrescriptionService
 
         return pos;
     }
+    public int delete(Prescription val)
+    {
+        int pos = findPosition(val);
+
+        if(pos == -1)
+            return -1;
+
+        int response = repo.delete(val);
+
+        map.remove(pos);
+
+        DatabaseAudit.send("delete_prescription",new Date());
+        return 1;
+    }
+
 
     public int update(Prescription val)
     {
@@ -62,6 +80,7 @@ public class PrescriptionService
 
         map.put(pos,val);
 
+        DatabaseAudit.send("update_prescription",new Date());
         return 1;
     }
 
@@ -70,6 +89,7 @@ public class PrescriptionService
         int response = repo.insert(val);
         map.put(map.size()-1,val);
 
+        DatabaseAudit.send("insert_prescription",new Date());
         return response;
     }
 

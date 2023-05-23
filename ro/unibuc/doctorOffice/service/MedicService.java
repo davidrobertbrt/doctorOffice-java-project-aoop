@@ -1,5 +1,6 @@
 package ro.unibuc.doctorOffice.service;
 
+import ro.unibuc.doctorOffice.audit.DatabaseAudit;
 import ro.unibuc.doctorOffice.model.Medic;
 import ro.unibuc.doctorOffice.model.Specialization;
 import ro.unibuc.doctorOffice.repository.MedicRepository;
@@ -13,6 +14,7 @@ public class MedicService
 
     public MedicService()
     {
+        this.medicMap = new HashMap<>();
         this.medicRepo = new MedicRepository();
     }
 
@@ -30,6 +32,7 @@ public class MedicService
             medicMap.put(i,listMedic.get(i));
         }
 
+        DatabaseAudit.send("load_medic",new Date());
         return 1;
     }
 
@@ -53,6 +56,7 @@ public class MedicService
         int response = medicRepo.insert(newMedic);
         medicMap.put(medicMap.size() - 1,newMedic);
 
+        DatabaseAudit.send("insert_medic",new Date());
         return response;
     }
 
@@ -68,6 +72,7 @@ public class MedicService
 
         medicMap.remove(pos);
 
+        DatabaseAudit.send("delete_medic",new Date());
         return 1;
     }
 
@@ -87,6 +92,7 @@ public class MedicService
 
         medicMap.put(pos,m);
 
+        DatabaseAudit.send("update_medic",new Date());
         return 1;
     }
 }

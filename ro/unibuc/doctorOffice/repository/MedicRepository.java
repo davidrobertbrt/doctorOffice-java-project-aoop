@@ -16,7 +16,9 @@ public final class MedicRepository
         String firstName = rs.getString("firstName");
         String lastName = rs.getString("lastName");
         String phoneNumber = rs.getString("phoneNumber");
-        Specialization specialization = (Specialization) rs.getObject("specialization");
+        String specializationValue = rs.getString("specialization");
+        Specialization specialization = Specialization.valueOf(specializationValue.toUpperCase());
+
 
         return new Medic(firstName,lastName,specialization,phoneNumber,id);
     }
@@ -123,7 +125,7 @@ public final class MedicRepository
         {
             statement.setString(1,m.getFirstName());
             statement.setString(2,m.getLastName());
-            statement.setObject(3,m.getSpecialization());
+            statement.setObject(3,m.getSpecialization(),java.sql.Types.OTHER);
             statement.setString(4,m.getPhoneNumber());
             statement.setObject(5,m.getId());
 

@@ -2,6 +2,7 @@ package ro.unibuc.doctorOffice.service;
 
 import java.util.*;
 
+import ro.unibuc.doctorOffice.audit.DatabaseAudit;
 import ro.unibuc.doctorOffice.model.Medic;
 import ro.unibuc.doctorOffice.repository.PacientRepository;
 import ro.unibuc.doctorOffice.model.Pacient;
@@ -15,6 +16,7 @@ public class PacientService
     public PacientService()
     {
         this.pacientRepo = new PacientRepository();
+        this.pacientMap = new HashMap<>();
     }
 
     public int loadPacients()
@@ -26,11 +28,12 @@ public class PacientService
 
         this.pacientMap = new HashMap<>();
 
-        for(int i = 0; i < pacientMap.size(); i++)
+        for(int i = 0; i < list.size(); i++)
         {
             pacientMap.put(i,list.get(i));
         }
 
+        DatabaseAudit.send("load_pacient",new Date());
         return 1;
     }
 
@@ -53,6 +56,7 @@ public class PacientService
         int response = pacientRepo.insert(newPacient);
         pacientMap.put(pacientMap.size() - 1,newPacient);
 
+        DatabaseAudit.send("insert_pacient",new Date());
         return response;
     }
 
@@ -67,6 +71,7 @@ public class PacientService
 
         pacientMap.remove(pos);
 
+        DatabaseAudit.send("delete_pacient",new Date());
         return 1;
     }
 
@@ -80,6 +85,7 @@ public class PacientService
         int response = pacientRepo.update(p);
         pacientMap.put(pos,p);
 
+        DatabaseAudit.send("update_pacient",new Date());
         return 1;
     }
 }

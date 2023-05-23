@@ -2,6 +2,7 @@ package ro.unibuc.doctorOffice.service;
 
 import java.util.*;
 
+import ro.unibuc.doctorOffice.audit.DatabaseAudit;
 import ro.unibuc.doctorOffice.model.*;
 import ro.unibuc.doctorOffice.repository.MedicRepository;
 import ro.unibuc.doctorOffice.repository.PacientRepository;
@@ -15,6 +16,7 @@ public class ReportService
     public ReportService()
     {
         repo = new ReportRepository();
+        this.map = new HashMap<>();
     }
 
     public int load()
@@ -31,6 +33,7 @@ public class ReportService
             map.put(i,list.get(i));
         }
 
+        DatabaseAudit.send("load_report",new Date());
         return 1;
     }
 
@@ -59,6 +62,7 @@ public class ReportService
 
         map.remove(pos);
 
+        DatabaseAudit.send("delete_report",new Date());
         return 1;
     }
 
@@ -73,6 +77,7 @@ public class ReportService
 
         map.put(pos,val);
 
+        DatabaseAudit.send("update_report",new Date());
         return 1;
     }
 
@@ -81,8 +86,8 @@ public class ReportService
         int response = repo.insert(val);
         map.put(map.size()-1,val);
 
+        DatabaseAudit.send("insert_report",new Date());
         return response;
     }
-
 
 }

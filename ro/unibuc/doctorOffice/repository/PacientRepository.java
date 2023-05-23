@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 public final class PacientRepository
 {
     public List<Pacient> readAll() {
-        String sqlQuery = "SELECT * FROM pacient";
+        String sqlQuery = "SELECT * FROM pacients";
         List<Pacient> pacients = new ArrayList<>();
 
         try (PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery);
@@ -30,7 +30,7 @@ public final class PacientRepository
     }
 
     public Pacient readByName(String firstName, String lastName) {
-        String sqlQuery = "SELECT * FROM pacient WHERE firstName = ? AND lastName = ?";
+        String sqlQuery = "SELECT * FROM pacients WHERE firstname = ? AND lastname = ?";
         Pacient pacient = null;
 
         try (PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery)) {
@@ -51,7 +51,7 @@ public final class PacientRepository
     }
 
     public Pacient readById(UUID id) {
-        String sqlQuery = "SELECT * FROM pacient WHERE id = ?";
+        String sqlQuery = "SELECT * FROM pacients WHERE id = ?";
         Pacient pacient = null;
 
         try (PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery)) {
@@ -83,7 +83,7 @@ public final class PacientRepository
 
     public int insert(Pacient p)
     {
-        String sqlQuery = "INSERT INTO pacient(id,firstName,lastName,phoneNumber,address,dateOfBirth VALUES(?,?,?,?,?,?)";
+        String sqlQuery = "INSERT INTO pacients(id,firstName,lastName,phonenumber,address,dateofbirth) VALUES(?,?,?,?,?,?)";
 
         try(PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery))
         {
@@ -101,7 +101,7 @@ public final class PacientRepository
     }
 
     public int update(Pacient p) {
-        String sqlQuery = "UPDATE pacient SET firstName = ?, lastName = ?, phoneNumber = ?, address = ?, dateOfBirth = ? WHERE id = ?";
+        String sqlQuery = "UPDATE pacients SET firstname = ?, lastname = ?, phonenumber = ?, address = ?, dateofbirth = ? WHERE id = ?";
 
         try (PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery)) {
             statement.setString(1, p.getFirstName());
@@ -118,7 +118,7 @@ public final class PacientRepository
     }
 
     public int delete(Pacient p) {
-        String sqlQuery = "DELETE FROM pacient WHERE id = ?";
+        String sqlQuery = "DELETE FROM pacients WHERE id = ?";
 
         try (PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery)) {
             statement.setObject(1, p.getId());

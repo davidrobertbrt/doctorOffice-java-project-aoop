@@ -44,7 +44,7 @@ We have services classes which use the CRUD operations from repositories and als
 
 They can be found in the `ro.unibuc.doctorOffice.service.*` package
 
-- o clasa Main din care sunt făcute apeluri către servicii
+- a `Main` class where we call the services...
 
 We call the services in the main class, first at load and then the `ro.unibuc.doctorOffice.utils.*` handle the operations to the services through a CLI implementation.
 

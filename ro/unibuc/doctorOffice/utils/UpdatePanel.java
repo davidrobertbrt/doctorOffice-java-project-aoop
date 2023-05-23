@@ -2,6 +2,8 @@ package ro.unibuc.doctorOffice.utils;
 
 import ro.unibuc.doctorOffice.utils.update.PacientUpdatePanel;
 import ro.unibuc.doctorOffice.utils.update.MedicUpdatePanel;
+import ro.unibuc.doctorOffice.utils.update.PrescriptionUpdatePanel;
+import ro.unibuc.doctorOffice.utils.update.ReportUpdatePanel;
 
 public class UpdatePanel extends Panel
 {
@@ -23,6 +25,12 @@ public class UpdatePanel extends Panel
                 break;
             case "pacient":
                 HandlerPanel.setPanel(new PacientUpdatePanel());
+                break;
+            case "raport":
+                HandlerPanel.setPanel(new ReportUpdatePanel());
+                break;
+            case "prescription":
+                HandlerPanel.setPanel(new PrescriptionUpdatePanel());
                 break;
             case "back":
                 HandlerPanel.setPanel(new MainPanel());

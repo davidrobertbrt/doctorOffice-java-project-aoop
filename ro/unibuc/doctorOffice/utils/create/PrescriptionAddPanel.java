@@ -26,6 +26,7 @@ public class PrescriptionAddPanel extends Panel
             System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
         }
         int selectedPacientId = scanner.nextInt();
+        scanner.nextLine();
         Pacient selectedPacient = Main.pacientService.pacientMap.get(selectedPacientId);
 
         System.out.println("Data utilizarii (dd-MM-yyyy):");

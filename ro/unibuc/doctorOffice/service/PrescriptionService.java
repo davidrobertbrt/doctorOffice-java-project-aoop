@@ -18,6 +18,7 @@ public class PrescriptionService
     public PrescriptionService()
     {
         repo = new PrescriptionRepository();
+        this.map = new HashMap<>();
     }
 
     public int load()

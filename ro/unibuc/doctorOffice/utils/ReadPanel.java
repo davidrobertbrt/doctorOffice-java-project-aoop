@@ -12,6 +12,7 @@ public class ReadPanel extends Panel
         System.out.println("prescriptie -> citeste prescriptiile pe baza pacientului");
         System.out.println("raport -> citeste rapoartele pe baza pacientului");
         System.out.println("programare -> citeste o programare pe ziua de azi");
+        System.out.println("toti -> arata toti pacientii si medicii ordonati dupa nume in clinica");
         System.out.println("back -> meniu principal");
         System.out.println("==================================");
         System.out.println("Astept optiunea ta...");
@@ -34,6 +35,9 @@ public class ReadPanel extends Panel
                 break;
             case "programare":
                 HandlerPanel.setPanel(new AppointmentReadPanel());
+                break;
+            case "toti":
+                HandlerPanel.setPanel(new PersonReadPanel());
                 break;
             case "back":
                 HandlerPanel.setPanel(new MainPanel());

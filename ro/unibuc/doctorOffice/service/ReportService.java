@@ -15,6 +15,7 @@ public class ReportService
     public ReportService()
     {
         repo = new ReportRepository();
+        this.map = new HashMap<>();
     }
 
     public int load()

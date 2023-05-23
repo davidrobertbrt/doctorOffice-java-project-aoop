@@ -25,6 +25,7 @@ public class MedicDeletePanel extends Panel
             System.out.println("medic nu a fost gasit.");
             scanner.nextLine();
             HandlerPanel.setPanel(new DeletePanel());
+            return;
         }
 
         Medic medic = optional.get();

@@ -29,6 +29,7 @@ public class PrescriptionReadPanel extends Panel
             System.out.println("pacientul nu a fost gasit.");
             scanner.nextLine();
             HandlerPanel.setPanel(new ReadPanel());
+            return;
         }
 
         Pacient pacient = optionalPacient.get();

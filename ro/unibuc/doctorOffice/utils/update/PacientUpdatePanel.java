@@ -2,10 +2,7 @@ package ro.unibuc.doctorOffice.utils.update;
 
 import ro.unibuc.doctorOffice.Main;
 import ro.unibuc.doctorOffice.model.Pacient;
-import ro.unibuc.doctorOffice.utils.CreatePanel;
-import ro.unibuc.doctorOffice.utils.HandlerPanel;
-import ro.unibuc.doctorOffice.utils.Panel;
-import ro.unibuc.doctorOffice.utils.UpdatePanel;
+import ro.unibuc.doctorOffice.utils.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,9 +21,18 @@ public class PacientUpdatePanel extends Panel
 
         String finalFirstName = firstName;
         String finalLastName = lastName;
+
         Optional<Pacient> optionalPacient = Main.pacientService.pacientMap.values().stream()
                 .filter(pacient->pacient.getFirstName().equals(finalFirstName) && pacient.getLastName().equals(finalLastName))
                 .findFirst();
+
+        if(!optionalPacient.isPresent())
+        {
+            System.out.println("pacientul nu a fost gasit.");
+            scanner.nextLine();
+            HandlerPanel.setPanel(new DeletePanel());
+            return;
+        }
 
         Pacient pacient = optionalPacient.get();
 

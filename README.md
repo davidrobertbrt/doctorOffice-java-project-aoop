@@ -59,6 +59,43 @@ Connection to the database is made using the `DatabaseConfig` class located in `
 
 - Upon program startup, the data will be loaded from files using the created services.
 
+```java
+public static void loadAll()
+{
+    pacientService.loadPacients();
+    medicService.loadMedics();
+    prescriptionService.load();
+    reportService.load();
+    appointmentService.load();
+}
+```
 
+- A service will be implemented to write to a CSV file or a database every time one of the actions described in the first stage is executed. The structure of the file/table will be: action_name, timestamp.
 
+This service is located in the `audit` package.
 
+The `send` function of this class, records an action and its timestamp in the database.
+
+```java
+
+public static int send(String nameAction,Date dateAction)
+{
+    String sqlQuery = "INSERT INTO audit(name_action,datetime_action) VALUES(?,?)";
+
+    try(PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery))
+    {
+        Date current = new Date();
+        Timestamp timestamp = new Timestamp(current.getTime());
+        statement.setString(1,nameAction);
+        statement.setTimestamp(2, timestamp);
+
+        return statement.executeUpdate();
+    }
+    catch(SQLException ex)
+    {
+        System.out.println(ex.getMessage());
+        return -1;
+    }
+}
+
+```

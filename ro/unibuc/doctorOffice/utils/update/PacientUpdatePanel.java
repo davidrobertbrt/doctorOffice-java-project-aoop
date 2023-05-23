@@ -32,7 +32,7 @@ public class PacientUpdatePanel extends Panel
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-        System.out.println("Adaugare un pacient nou.");
+        System.out.println("Actualizare pacient nou.");
         System.out.println("Prenume:");
         firstName = scanner.nextLine();
 

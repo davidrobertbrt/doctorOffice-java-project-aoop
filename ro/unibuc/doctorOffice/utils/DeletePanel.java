@@ -1,8 +1,6 @@
 package ro.unibuc.doctorOffice.utils;
 
-import ro.unibuc.doctorOffice.utils.delete.AppointmentDeletePanel;
-import ro.unibuc.doctorOffice.utils.delete.MedicDeletePanel;
-import ro.unibuc.doctorOffice.utils.delete.PacientDeletePanel;
+import ro.unibuc.doctorOffice.utils.delete.*;
 
 public class DeletePanel extends Panel
 {
@@ -12,6 +10,8 @@ public class DeletePanel extends Panel
         System.out.println("medic -> sterge un medic");
         System.out.println("pacient -> sterge un pacient");
         System.out.println("programare -> sterge o programare pe baza datei si orei");
+        System.out.println("raport-> sterge un raport pe baza pacientului");
+        System.out.println("prescriptie->sterge o prescriptie pe baza pacientului");
         System.out.println("back -> meniu principal");
         System.out.println("==================================");
         System.out.println("Astept optiunea ta...");
@@ -28,6 +28,12 @@ public class DeletePanel extends Panel
                 break;
             case "programare":
                 HandlerPanel.setPanel(new AppointmentDeletePanel());
+                break;
+            case "prescriptie":
+                HandlerPanel.setPanel(new PrescriptionDeletePanel());
+                break;
+            case "report":
+                HandlerPanel.setPanel(new ReportDeletePanel());
                 break;
             case "back":
                 HandlerPanel.setPanel(new MainPanel());

@@ -7,7 +7,7 @@ public class UpdatePanel extends Panel
 {
     public void execute()
     {
-        System.out.println("===Sterge====");
+        System.out.println("===Actualizeaza====");
         System.out.println("medic -> actualizeaza un medic");
         System.out.println("pacient -> actualizeaza un pacient");
         System.out.println("back -> meniu principal");

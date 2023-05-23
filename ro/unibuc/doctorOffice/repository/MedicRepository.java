@@ -1,4 +1,5 @@
 package ro.unibuc.doctorOffice.repository;
+import org.postgresql.util.PGobject;
 import ro.unibuc.doctorOffice.config.DatabaseConnection;
 import ro.unibuc.doctorOffice.model.Medic;
 import ro.unibuc.doctorOffice.model.Specialization;
@@ -103,10 +104,15 @@ public final class MedicRepository
     {
         String sqlQuery = "UPDATE medics SET firstName = ?, lastName = ?, specialization = ?, phoneNumber = ? WHERE id = ?";
 
-        try(PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery)){
+        try(PreparedStatement statement = DatabaseConnection.getConnection().prepareStatement(sqlQuery))
+        {
+            PGobject specializationObject = new PGobject();
+            specializationObject.setType("Specialization");
+            specializationObject.setValue(m.getSpecialization().toString());
+
             statement.setString(1,m.getFirstName());
             statement.setString(2,m.getLastName());
-            statement.setObject(3,m.getSpecialization());
+            statement.setObject(3,specializationObject);
             statement.setString(4,m.getPhoneNumber());
             statement.setObject(5,m.getId());
 

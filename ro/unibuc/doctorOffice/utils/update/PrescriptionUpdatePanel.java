@@ -67,7 +67,8 @@ public class PrescriptionUpdatePanel extends Panel
             scanner.nextLine();
 
             p = Main.prescriptionService.map.get(choice);
-            System.out.println("Prescriptia nu exista! Alege din nou!");
+            if(p == null)
+                System.out.println("Prescriptia nu exista! Alege din nou!");
         }while(p == null);
 
         System.out.println("Data utilizarii (dd-MM-yyyy):");
@@ -103,7 +104,7 @@ public class PrescriptionUpdatePanel extends Panel
         finally{
             System.out.println("Apasa pentru a te intoarce...");
             String input = scanner.nextLine();
-            HandlerPanel.setPanel(new CreatePanel());
+            HandlerPanel.setPanel(new UpdatePanel());
         }
     }
 

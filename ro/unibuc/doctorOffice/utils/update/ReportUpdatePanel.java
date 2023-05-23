@@ -3,10 +3,7 @@ package ro.unibuc.doctorOffice.utils.update;
 import ro.unibuc.doctorOffice.Main;
 import ro.unibuc.doctorOffice.model.Pacient;
 import ro.unibuc.doctorOffice.model.Report;
-import ro.unibuc.doctorOffice.utils.CreatePanel;
-import ro.unibuc.doctorOffice.utils.HandlerPanel;
-import ro.unibuc.doctorOffice.utils.Panel;
-import ro.unibuc.doctorOffice.utils.ReadPanel;
+import ro.unibuc.doctorOffice.utils.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,11 +51,11 @@ public class ReportUpdatePanel extends Panel
             scanner.nextLine();
 
             r = Main.reportService.map.get(choice);
-            System.out.println("raportul nu exista! Alege din nou!");
+            if(r == null)
+                System.out.println("raportul nu exista! Alege din nou!");
         }while(r == null);
 
         System.out.println("Adauga descrierea raportului");
-        scanner.nextLine(); // Consume the newline character
         String description = scanner.nextLine();
 
         System.out.println("Data raportului... (dd-MM-yyyy):");
@@ -77,7 +74,7 @@ public class ReportUpdatePanel extends Panel
         } finally {
             System.out.println("Apasa tasta enter pentru a te intoarce");
             String input = scanner.nextLine();
-            HandlerPanel.setPanel(new CreatePanel());
+            HandlerPanel.setPanel(new UpdatePanel());
         }
     }
 }

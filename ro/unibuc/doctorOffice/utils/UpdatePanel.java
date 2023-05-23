@@ -12,6 +12,8 @@ public class UpdatePanel extends Panel
         System.out.println("===Actualizeaza====");
         System.out.println("medic -> actualizeaza un medic");
         System.out.println("pacient -> actualizeaza un pacient");
+        System.out.println("prescriptie -> actualizeaza un prescriptie");
+        System.out.println("raport -> actualizeaza un raport");
         System.out.println("back -> meniu principal");
         System.out.println("==================================");
         System.out.println("Astept optiunea ta...");
@@ -29,7 +31,7 @@ public class UpdatePanel extends Panel
             case "raport":
                 HandlerPanel.setPanel(new ReportUpdatePanel());
                 break;
-            case "prescription":
+            case "prescriptie":
                 HandlerPanel.setPanel(new PrescriptionUpdatePanel());
                 break;
             case "back":
